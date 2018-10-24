@@ -66,6 +66,7 @@ maxform          we must pick excatly one formation
 formlimit(j)     given a formationa and position the amount of player in the position is limited
 mostone(i)       each player can be at most one position
 balance          make sure there is a balance between quality and strength players
+qual             make sure at least one qualirt player is used
 ;
 
 obj..            z =e= sum((i,j), c(i,j)*w(i,j) );
@@ -73,6 +74,7 @@ maxform..        sum(f, x(f))    =e= 1;
 formlimit(j)..   sum(i, w(i,j) )- sum(f, d(f,j)*x(f) ) =e= 0;
 mostone(i)..     sum(j, w(i,j) ) =l= 1;
 balance..        sum(quality(i) ,sum(j, w(i,j))) - sum(strength(i) ,sum(j, w(i,j)))=l= 3;
+qual..           sum(quality(i) ,sum(j, w(i,j))) =g= 1;
 
 * Comments on the constraints
 * obj adds up the gain we get from having pler i in position j
